@@ -111,6 +111,16 @@ function updateProgressBar(event) {
     }
 }
 
+function setProgressBar(event) {
+    // console.log(event);
+    const width = this.clientWidth; //total width showing the duration progress bar
+    const clickX = event.offsetX;
+
+    const { duration } = music;
+    music.currentTime = (clickX / width) * duration; //using currentTime attribute from audio/video documentation.
+}
+
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 music.addEventListener('timeupdate', updateProgressBar);
+progressContainer.addEventListener('click', setProgressBar);
